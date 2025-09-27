@@ -1,0 +1,135 @@
+<!--
+  File: index.html
+  Author: Student (We'R'Docs Medical form)
+  Date created: September 27, 2025
+  Date last edited: September 27, 2025
+  Description: Patient Registration Form with embedded footer, centered buttons, and matching colors.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>We'R'Docs Medical — Patient Registration</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="Hw1.js"></script>
+</head>
+<body>
+  <!-- Top banner / header -->
+  <header class="topbar">
+    <div class="brand">
+      <img class="logo" src="Logo.jpeg" alt="Houston Medical Center Logo" class="logo-img">
+      <div class="brand-text">
+        <div class="brand-name">We'R'Docs Medical</div>
+        <div id="todayDate" class="brand-date" aria-live="polite">today is: September 27, 2025</div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <h1 class="form-title">Patient's Registration Form</h1>
+
+    <!-- FORM -->
+    <form id="patientForm" novalidate>
+      <table class="form-table" role="presentation">
+        <tr>
+          <td><label for="first_name">First Name</label></td>
+          <td><input id="first_name" name="first_name" type="text" maxlength="30" required /></td>
+          <td><label for="middle_initial">MI</label></td>
+          <td class="mi-cell"><input id="middle_initial" name="middle_initial" type="text" maxlength="1" pattern="[A-Za-z]" /></td>
+          <td><label for="last_name">Last Name</label></td>
+          <td><input id="last_name" name="last_name" type="text" maxlength="30" required /></td>
+        </tr>
+        <tr>
+          <td><label for="dob">DOB</label></td>
+          <td><input id="dob" name="dob" type="text" placeholder="MM/DD/YYYY" required /></td>
+          <td><label for="ssn">SSN</label></td>
+          <td colspan="3"><input id="ssn" name="ssn" type="password" maxlength="11" required /></td>
+        </tr>
+        <tr>
+          <td><label for="address1">Address 1</label></td>
+          <td colspan="5"><input id="address1" name="address1" type="text" maxlength="30" required /></td>
+        </tr>
+        <tr>
+          <td><label for="address2">Address 2</label></td>
+          <td colspan="5"><input id="address2" name="address2" type="text" maxlength="30" /></td>
+        </tr>
+        <tr>
+          <td><label for="city">City</label></td>
+          <td><input id="city" name="city" type="text" maxlength="30" required /></td>
+          <td><label for="state">State</label></td>
+          <td><select id="state" name="state" required><option value="">Select…</option></select></td>
+          <td><label for="zip_code">ZIP</label></td>
+          <td><input id="zip_code" name="zip_code" type="text" maxlength="10" required /></td>
+        </tr>
+        <tr>
+          <td><label for="email">Email</label></td>
+          <td><input id="email" name="email" type="email" maxlength="50" required /></td>
+          <td><label for="phone_number">Phone</label></td>
+          <td colspan="3"><input id="phone_number" name="phone_number" type="text" maxlength="12" /></td>
+        </tr>
+        <tr class="notes-row">
+          <td><label for="symptoms">Symptoms / Notes</label></td>
+          <td colspan="5"><textarea id="symptoms" name="symptoms" rows="5" cols="50"></textarea></td>
+        </tr>
+      </table>
+
+      <fieldset class="fieldset">
+        <legend>Medical History</legend>
+        <label><input type="checkbox" name="medical_history" value="Chicken Pox"> Chicken Pox</label>
+        <label><input type="checkbox" name="medical_history" value="Measles"> Measles</label>
+        <label><input type="checkbox" name="medical_history" value="Covid-19"> Covid-19</label>
+        <label><input type="checkbox" name="medical_history" value="Small Pox"> Small Pox</label>
+        <label><input type="checkbox" name="medical_history" value="Tetanus"> Tetanus</label>
+      </fieldset>
+
+      <div class="radio-rows">
+        <div><span>Gender</span>
+          <label><input type="radio" name="gender" value="Male"> Male</label>
+          <label><input type="radio" name="gender" value="Female"> Female</label>
+          <label><input type="radio" name="gender" value="Other"> Other</label>
+        </div>
+        <div><span>Vaccinated</span>
+          <label><input type="radio" name="vaccinated" value="YES"> YES</label>
+          <label><input type="radio" name="vaccinated" value="NO"> NO</label>
+        </div>
+        <div><span>Insurance</span>
+          <label><input type="radio" name="insurance" value="YES"> YES</label>
+          <label><input type="radio" name="insurance" value="NO"> NO</label>
+        </div>
+      </div>
+
+      <div class="slider-row">
+        <label for="health_scale">Health Scale (1–10)</label>
+        <input type="range" id="health_scale" name="health_scale" min="1" max="10" value="5" step="1" oninput="document.getElementById('healthValue').textContent=this.value">
+        <span id="healthValue">5</span>
+      </div>
+
+      <table class="form-table small">
+        <tr><td><label for="user_id">User ID</label></td><td colspan="5"><input id="user_id" name="user_id" maxlength="20" required></td></tr>
+        <tr><td><label for="password">Password</label></td><td colspan="5"><input id="password" name="password" type="password" maxlength="20" required></td></tr>
+        <tr><td><label for="confirm_password">Confirm Password</label></td><td colspan="5"><input id="confirm_password" name="confirm_password" type="password" maxlength="20" required></td></tr>
+      </table>
+
+      <div class="button-row">
+        <button type="reset" class="btn btn-secondary">CLEAR</button>
+        <button type="submit" class="btn btn-primary">SUBMIT</button>
+      </div>
+    </form>
+  </main>
+
+  <!-- Embedded footer -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand"><strong>We'R'Docs Medical</strong><br/>Houston Medical Center<br/>PO BOX 18881, Sugar Land, TX 77496</div>
+      <nav class="footer-nav">
+        <a href="#address" class="pill">ADDRESS</a>
+        <a href="#contact" class="pill">CONTACT US</a>
+        <a href="https://twitter.com" class="pill" target="_blank">SOCIAL MEDIA</a>
+      </nav>
+      <div class="footer-copy">&copy; <span id="year"></span> We'R'Docs Medical</div>
+    </div>
+  </footer>
+  <script>document.getElementById("year").textContent=new Date().getFullYear();</script>
+</body>
+</html>

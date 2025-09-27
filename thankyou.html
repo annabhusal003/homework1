@@ -1,0 +1,84 @@
+<!--
+  File: thankyou.html
+  Author: Student
+  Date created: (dynamic)
+  Date last edited: (dynamic)
+  Description: Thank-you page; reuses header/footer styling and reads sessionStorage to show a brief confirmation.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>We'R'Docs — Thank You</title>
+  <link rel="stylesheet" href="style.css" />
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Set date
+      document.getElementById('todayDate').textContent = 'today is: ' + new Date().toLocaleDateString(undefined, {year:'numeric',month:'long',day:'numeric'});
+
+      // Read a few fields saved by Hw4.js
+      const data = JSON.parse(sessionStorage.getItem('patientSummary') || '{}');
+      const name = [data.first_name, data.last_name].filter(Boolean).join(' ');
+      const user = data.user_id || '(not provided)';
+      document.getElementById('thanksLine').textContent = name ? `Thanks, ${name}!` : 'Thanks!';
+      document.getElementById('userLine').textContent = `Your user ID: ${user}`;
+
+      const ul = document.getElementById('summaryList');
+      const keys = ['email','phone_number','state','zip_code','gender','vaccinated','insurance','health_scale'];
+      keys.forEach(k => {
+        if (data[k]) {
+          const li = document.createElement('li');
+          li.textContent = `${k.replace('_',' ').toUpperCase()}: ${data[k]}`;
+          ul.appendChild(li);
+        }
+      });
+
+      // Load footer
+      fetch('footer.html').then(r => r.text()).then(html => {
+        document.getElementById('footer').innerHTML = html;
+      }).catch(()=>{});
+    });
+  </script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <img class="logo" src="Logo.jpeg" alt="Houston Medical Center Logo" class="logo-img">
+      <div class="brand-text">
+        <div class="brand-name">We'R'Docs Medical</div>
+        <div id="todayDate" class="brand-date">today is: [dynamic date]</div>
+      </div>
+    </div>
+  </header>
+
+  <main class="thanks-main">
+    <h1 id="thanksLine">Thanks!</h1>
+    <p id="userLine"></p>
+    <h2>Summary</h2>
+    <ul id="summaryList" class="summary"></ul>
+    <p><a href="index.html" class="btn btn-secondary">Back to form</a></p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <strong>We'R'Docs Medical</strong><br/>
+        Houston Medical Center<br/>
+        PO BOX 18881, Sugar Land, TX 77496
+      </div>
+      <nav class="footer-nav">
+        <a href="#address" class="pill">ADDRESS</a>
+        <a href="#contact" class="pill">CONTACT US</a>
+        <a href="https://twitter.com" target="_blank" rel="noopener" class="pill">SOCIAL MEDIA</a>
+      </nav>
+      <div class="footer-copy">
+        &copy; <span id="year"></span> We'R'Docs Medical
+      </div>
+    </div>
+  </footer>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

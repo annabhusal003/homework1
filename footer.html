@@ -1,0 +1,27 @@
+<!--
+  File: footer.html
+  Author: Student
+  Date created: September 27, 2025
+  Date last edited: September 27, 2025
+  Description: Shared footer fragment per assignment.
+-->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <strong>We'R'Docs Medical</strong><br/>
+      Houston Medical Center<br/>
+      PO BOX 18881, Sugar Land, TX 77496
+    </div>
+    <nav class="footer-nav">
+      <a href="#address" class="pill">ADDRESS</a>
+      <a href="#contact" class="pill">CONTACT US</a>
+      <a href="https://twitter.com" target="_blank" rel="noopener" class="pill">SOCIAL MEDIA</a>
+    </nav>
+    <div class="footer-copy">
+      &copy; <span id="year"></span> We'R'Docs Medical
+    </div>
+  </div>
+</footer>
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
