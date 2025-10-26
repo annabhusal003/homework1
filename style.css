@@ -138,3 +138,23 @@ textarea{
   .notes-row textarea{min-height:120px}
   .brand{gap:8px}
 }
+#reviewArea {
+  margin-top: 2rem;
+  background: #fff;
+  border: 2px solid var(--border);
+  border-radius: .75rem;
+  padding: 1rem;
+}
+#reviewArea table {
+  width: 100%;
+  border-collapse: collapse;
+}
+#reviewArea td {
+  border: 1px solid var(--border);
+  padding: .5rem .75rem;
+}
+#reviewArea h2 {
+  text-align: center;
+  margin-top: 0;
+  color: var(--accent);
+}
